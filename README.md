@@ -1,13 +1,13 @@
 # ITM
 
-Canonical consumer repository: [AgentDraven/ITM](https://github.com/AgentDraven/ITM), `main`. Local consumer folder: `C:\DApps\ITM`. Shared Store source: `C:\DApps\merit-utils\services\merit-store`; shared identity source: `C:\DApps\merit-subs`.
+Canonical consumer repository: [AgentDraven/ITM](https://github.com/AgentDraven/ITM), `main`. Local consumer folder: `C:\DApps\ITM`. Shared Store source: [AgentDraven/merit-store](https://github.com/AgentDraven/merit-store) (standalone provider; local `C:\DApps\merit-store`); shared identity source: `C:\DApps\merit-subs`.
 
 ITM is the company and consumer product name. This repository delivers the customer front end for the ITM store: service information, contact, booking selection, and subscriber access.
 
 ## Ownership
 
 - This consumer owns ITM branding, pages, customer interactions, and the handoff to shared services.
-- MeritStore, maintained inside `merit-utils/services/merit-store` on `main`, owns the ITM tenant catalog, availability, appointment holds, checkout, and booking confirmation APIs.
+- MeritStore — the standalone provider repository [AgentDraven/merit-store](https://github.com/AgentDraven/merit-store) on `main` — owns the ITM tenant catalog, availability, appointment holds, checkout, and booking confirmation APIs.
 - MeritSubs owns subscriber identity and entitlements.
 - MeritUtils supplies shared utilities such as the workbench and journal.
 
@@ -30,7 +30,7 @@ The build writes the customer site to `dist/`. Customer-facing branding is confi
 
 The shared ITM provider has recorded hosted read-only health, availability, and catalog checks. Live booking acceptance still requires durable persistence, hold-expiry cleanup, verified subscriber authentication, audit identifiers, and a hosted booking-mutation test. The consumer shows an unavailable state when booking is not activated.
 
-See the [consumer validation record](docs/IAR/SEFHAK_E2E_VALIDATION_2026-10-19.md), the [consolidated provider validation record](https://github.com/AgentDraven/merit-utils/blob/main/services/merit-store/meritstore%20docs/IAR/ITM_E2E_VALIDATION_2026-10-19.md), and the [current consolidation checkpoint](docs/IAR/ITM_PROVIDER_CONSOLIDATION.md).
+See the [consumer validation record](docs/IAR/SEFHAK_E2E_VALIDATION_2026-10-19.md), the [provider validation record](https://github.com/AgentDraven/merit-store/blob/main/meritstore%20docs/IAR/ITM_E2E_VALIDATION_2026-10-19.md), and the [consolidation record (superseded Nov 14, 2026)](docs/IAR/ITM_PROVIDER_CONSOLIDATION.md).
 
 ## Repository compatibility
 

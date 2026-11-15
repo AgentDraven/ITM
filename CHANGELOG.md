@@ -1,3 +1,7 @@
+## 2026-11-14 — rewired to the standalone MeritStore provider
+
+- The Oct 21, 2026 consolidation of MeritStore into merit-utils is reversed by the Master's direction. ITM's provider lock now names the standalone `AgentDraven/merit-store` repository (root `.`); runtime endpoints are unchanged (`merit-storev01.vercel.app`, tenant `itm`). README/AGENTS ownership text corrected; the consolidation IAR is bannered superseded.
+
 ## [0.3.36] - 2026-10-21
 
 - Validate the committed provider lock and hosted SRI in CI without assuming access to private sibling repositories. Authenticated remote-main verification remains a required release check.

@@ -14,9 +14,12 @@
     }
   },
   "store": {
-    "provider": "meritutils",
-    "root": "services/merit-store",
+    "provider": "merit-store",
+    "repository": "AgentDraven/merit-store",
+    "branch": "main",
+    "root": ".",
     "tenant": "itm",
-    "api_base": "https://merit-storev01.vercel.app/api"
+    "api_base": "https://merit-storev01.vercel.app/api",
+    "note": "Standalone provider repository \u2014 restored Nov 14, 2026 by the Master's direction, reversing the Oct 21, 2026 consolidation into merit-utils."
   }
 }

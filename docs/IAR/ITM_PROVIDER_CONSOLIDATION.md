@@ -1,5 +1,7 @@
 # ITM shared-provider acceptance — 2026-10-21
 
+> **SUPERSEDED — Nov 14, 2026.** Reversed by the Master's direction: MeritStore is restored as the standalone provider repository and ITM is rewired to it (cfg/providers.lock.json). Retained as a historical record only.
+
 **ACK:** the user directed ITM naming, reconciliation of the separate Store checkout, physical Store consolidation into Utils, no extra branches/forks, and consumption of provider main tips.
 
 ## Current source contract
