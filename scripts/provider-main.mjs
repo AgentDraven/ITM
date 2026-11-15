@@ -43,8 +43,10 @@ if (syncing) {
     pins.packages[key] = {package_id:packageId, version, cdn_base:entry.cdn_base, artifacts};
   }
   const layout = JSON.parse(git(utilsRoot, 'show', `${providers.meritutils.commit}:cfg/provider-layout.json`));
-  assert.equal(layout.services['merit-store'].root, 'services/merit-store');
-  write(lockPath, {schema:'merit.consumer-provider-lock.v1', consumer:'ITM', providers, store:{provider:'meritutils', root:'services/merit-store', tenant:'itm', api_base:'https://merit-storev01.vercel.app/api'}});
+  const storeLayout = layout.providers['merit-store'];
+  assert.equal(storeLayout.repository, 'AgentDraven/merit-store', 'merit-store must be the standalone provider repository');
+  assert.equal(storeLayout.root, '.', 'merit-store provider root is its repository root');
+  write(lockPath, {schema:'merit.consumer-provider-lock.v1', consumer:'ITM', providers, store:{provider:'merit-store', repository:'AgentDraven/merit-store', branch:'main', root:'.', tenant:'itm', api_base:'https://merit-storev01.vercel.app/api', note:'Standalone provider repository \u2014 restored Nov 14, 2026 by the Master\u2019s direction, reversing the Oct 21, 2026 consolidation into merit-utils.'}});
   write('cfg/par_pins.json', pins);
   let play = readFileSync(resolve(root, 'play/index.html'), 'utf8');
   const wb = pins.packages.merit_workbench;
@@ -67,8 +69,10 @@ if (syncing) {
 
 const lock = read(lockPath);
 assert.equal(lock.consumer, 'ITM');
-assert.equal(lock.store.root, 'services/merit-store');
-assert.equal(lock.store.provider, 'meritutils');
+assert.equal(lock.store.root, '.', 'merit-store is a standalone provider repository; its root is the repository root');
+assert.equal(lock.store.provider, 'merit-store');
+assert.equal(lock.store.repository, 'AgentDraven/merit-store');
+assert.equal(lock.store.branch, 'main');
 for (const provider of Object.values(lock.providers)) {
   assert.equal(provider.branch, 'main');
   assert.match(provider.commit, /^[0-9a-f]{40}$/);

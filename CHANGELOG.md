@@ -1,3 +1,9 @@
+## [0.3.37] - 2026-11-15 — build fix: provider-main conformed to the standalone merit-store
+
+- The Nov 14 rewire (b109dee) updated the provider lock to the standalone merit-store but left the build's validator asserting the consolidation-era shape (store root `services/merit-store`, provider `meritutils`) — the production deployment of b109dee FAILED on Vercel (`npm run build` exited 1) and sefhakv01 kept serving its previous deployment. The failure was reproduced locally and fixed the same day.
+- `scripts/provider-main.mjs`: the validator now asserts the standalone shape (provider `merit-store`, repository `AgentDraven/merit-store`, branch `main`, root `.`), and the sync path reads the store declaration from the provider registry's `providers['merit-store']` entry instead of the removed `services` map, writing the lock in the standalone shape. No provider was restructured — the consumer conformed to the provider's existing structure.
+- Validation: `npm run build` and `npm run verify` (lock + build + verify + fork contract) pass locally.
+
 ## 2026-11-14 — rewired to the standalone MeritStore provider
 
 - The Oct 21, 2026 consolidation of MeritStore into merit-utils is reversed by the Master's direction. ITM's provider lock now names the standalone `AgentDraven/merit-store` repository (root `.`); runtime endpoints are unchanged (`merit-storev01.vercel.app`, tenant `itm`). README/AGENTS ownership text corrected; the consolidation IAR is bannered superseded.
